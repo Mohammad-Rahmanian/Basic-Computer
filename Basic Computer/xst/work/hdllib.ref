@@ -1,0 +1,6 @@
+EN cpu NULL C:/Users/asus/VhdlProjects/Basic_Computer1/CPU.vhd sub00/vhpl00 1656427359
+AR cpu behavioral C:/Users/asus/VhdlProjects/Basic_Computer1/CPU.vhd sub00/vhpl01 1656427360
+EN computer NULL C:/Users/asus/VhdlProjects/Basic_Computer1/Computer.vhd sub00/vhpl04 1656427363
+AR ram behavioral C:/Users/asus/VhdlProjects/Basic_Computer1/RAM.vhd sub00/vhpl03 1656427362
+EN ram NULL C:/Users/asus/VhdlProjects/Basic_Computer1/RAM.vhd sub00/vhpl02 1656427361
+AR computer behavioral C:/Users/asus/VhdlProjects/Basic_Computer1/Computer.vhd sub00/vhpl05 1656427364

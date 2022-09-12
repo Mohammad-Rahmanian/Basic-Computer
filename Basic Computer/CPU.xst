@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/asus/VhdlProjects/Basic_Computer1/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/asus/VhdlProjects/Basic_Computer1/xst"
+elaborate
+-ifn CPU.prj
+-ifmt mixed

@@ -1,0 +1,462 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
+ 
+--> Reading design: Computer.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Computer.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Computer"
+Output Format                      : NGC
+Target Device                      : xc3s400-5-pq208
+
+---- Source Options
+Top Module Name                    : Computer
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/asus/VhdlProjects/Basic_Computer1/CPU.vhd" in Library work.
+Architecture behavioral of Entity cpu is up to date.
+Compiling vhdl file "C:/Users/asus/VhdlProjects/Basic_Computer1/RAM.vhd" in Library work.
+Architecture behavioral of Entity ram is up to date.
+Compiling vhdl file "C:/Users/asus/VhdlProjects/Basic_Computer1/Computer.vhd" in Library work.
+Entity <computer> compiled.
+Entity <computer> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <Computer> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <CPU> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <RAM> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <Computer> in library <work> (Architecture <behavioral>).
+Entity <Computer> analyzed. Unit <Computer> generated.
+
+Analyzing Entity <CPU> in library <work> (Architecture <behavioral>).
+Entity <CPU> analyzed. Unit <CPU> generated.
+
+Analyzing Entity <RAM> in library <work> (Architecture <behavioral>).
+Entity <RAM> analyzed. Unit <RAM> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <CPU>.
+    Related source file is "C:/Users/asus/VhdlProjects/Basic_Computer1/CPU.vhd".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 10                                             |
+    | Transitions        | 21                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 8                                              |
+    | Clock              | clock                     (rising_edge)        |
+    | Reset              | reset                     (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | si                                             |
+    | Power Up State     | si                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit register for signal <Address>.
+    Found 1-bit register for signal <oe>.
+    Found 8-bit tristate buffer for signal <output_data>.
+    Found 1-bit register for signal <we>.
+    Found 9-bit register for signal <Accumulator>.
+    Found 9-bit adder for signal <Accumulator_8$add0000> created at line 113.
+    Found 5-bit register for signal <AddressRegister>.
+    Found 8-bit register for signal <Mtridata_output_data> created at line 62.
+    Found 1-bit register for signal <Mtrien_output_data> created at line 62.
+    Found 3-bit register for signal <opcode>.
+    Found 5-bit register for signal <PC>.
+    Found 5-bit adder for signal <PC$addsub0000> created at line 59.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  38 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   8 Tristate(s).
+Unit <CPU> synthesized.
+
+
+Synthesizing Unit <RAM>.
+    Related source file is "C:/Users/asus/VhdlProjects/Basic_Computer1/RAM.vhd".
+WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32x8-bit single-port RAM <Mram_block_ram> for signal <block_ram>.
+    Found 8-bit register for signal <output_data>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   8 D-type flip-flop(s).
+Unit <RAM> synthesized.
+
+
+Synthesizing Unit <Computer>.
+    Related source file is "C:/Users/asus/VhdlProjects/Basic_Computer1/Computer.vhd".
+Unit <Computer> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 32x8-bit single-port RAM                              : 1
+# Adders/Subtractors                                   : 2
+ 5-bit adder                                           : 1
+ 9-bit adder                                           : 1
+# Registers                                            : 18
+ 1-bit register                                        : 12
+ 3-bit register                                        : 1
+ 5-bit register                                        : 3
+ 8-bit register                                        : 2
+# Tristates                                            : 1
+ 8-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <CPU_Computer/state/FSM> on signal <state[1:10]> with one-hot encoding.
+---------------------
+ State | Encoding
+---------------------
+ si    | 0000000001
+ s0    | 0000000010
+ s1    | 0010000000
+ s2    | 0000001000
+ s3    | 0100000000
+ s4    | 1000000000
+ s5    | 0000100000
+ sr    | 0000000100
+ sw    | 0001000000
+ sf    | 0000010000
+---------------------
+
+Synthesizing (advanced) Unit <RAM>.
+INFO:Xst:3231 - The small RAM <Mram_block_ram> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 8-bit                     |          |
+    |     clkA           | connected to signal <clock>         | rise     |
+    |     weA            | connected to signal <_and0000>      | high     |
+    |     addrA          | connected to signal <address>       |          |
+    |     diA            | connected to signal <input_data>    |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <RAM> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# RAMs                                                 : 1
+ 32x8-bit single-port distributed RAM                  : 1
+# Adders/Subtractors                                   : 2
+ 5-bit adder                                           : 1
+ 9-bit adder                                           : 1
+# Registers                                            : 46
+ Flip-Flops                                            : 46
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2042 - Unit CPU: 8 internal tristates are replaced by logic (pull-up yes): output_data<0>, output_data<1>, output_data<2>, output_data<3>, output_data<4>, output_data<5>, output_data<6>, output_data<7>.
+
+Optimizing unit <Computer> ...
+
+Optimizing unit <CPU> ...
+
+Optimizing unit <RAM> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Computer, actual ratio is 2.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 56
+ Flip-Flops                                            : 56
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Computer.ngr
+Top Level Output File Name         : Computer
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 2
+
+Cell Usage :
+# BELS                             : 147
+#      GND                         : 1
+#      INV                         : 1
+#      LUT1                        : 1
+#      LUT2                        : 31
+#      LUT2_D                      : 1
+#      LUT2_L                      : 3
+#      LUT3                        : 17
+#      LUT3_D                      : 2
+#      LUT3_L                      : 2
+#      LUT4                        : 47
+#      LUT4_D                      : 2
+#      LUT4_L                      : 19
+#      MUXCY                       : 8
+#      MUXF5                       : 3
+#      XORCY                       : 9
+# FlipFlops/Latches                : 56
+#      FDC                         : 34
+#      FDE                         : 20
+#      FDP                         : 2
+# RAMS                             : 8
+#      RAM32X1S                    : 8
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 1
+#      IBUF                        : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s400pq208-5 
+
+ Number of Slices:                       79  out of   3584     2%  
+ Number of Slice Flip Flops:             56  out of   7168     0%  
+ Number of 4 input LUTs:                142  out of   7168     1%  
+    Number used as logic:               126
+    Number used as RAMs:                 16
+ Number of IOs:                           2
+ Number of bonded IOBs:                   2  out of    141     1%  
+ Number of GCLKs:                         1  out of      8    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock                              | BUFGP                  | 64    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-------------------------------------------------------+---------------------------------+-------+
+Control Signal                                         | Buffer(FF name)                 | Load  |
+-------------------------------------------------------+---------------------------------+-------+
+CPU_Computer/reset_inv(CPU_Computer/reset_inv1_INV_0:O)| NONE(CPU_Computer/Accumulator_0)| 36    |
+-------------------------------------------------------+---------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 6.131ns (Maximum Frequency: 163.094MHz)
+   Minimum input arrival time before clock: 3.713ns
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock'
+  Clock period: 6.131ns (frequency: 163.094MHz)
+  Total number of paths / destination ports: 777 / 132
+-------------------------------------------------------------------------
+Delay:               6.131ns (Levels of Logic = 4)
+  Source:            CPU_Computer/state_FSM_FFd9 (FF)
+  Destination:       CPU_Computer/Accumulator_5 (FF)
+  Source Clock:      clock rising
+  Destination Clock: clock rising
+
+  Data Path: CPU_Computer/state_FSM_FFd9 to CPU_Computer/Accumulator_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             25   0.626   1.564  CPU_Computer/state_FSM_FFd9 (CPU_Computer/state_FSM_FFd9)
+     LUT4_D:I3->O          6   0.479   1.023  CPU_Computer/Accumulator_1_mux000031 (CPU_Computer/N9)
+     LUT2:I1->O            1   0.479   0.704  CPU_Computer/Accumulator_4_mux00001 (CPU_Computer/Accumulator_4_mux00001)
+     LUT4_L:I3->LO         1   0.479   0.123  CPU_Computer/Accumulator_4_mux000020 (CPU_Computer/Accumulator_4_mux000020)
+     LUT4:I3->O            1   0.479   0.000  CPU_Computer/Accumulator_4_mux000042 (CPU_Computer/Accumulator_4_mux0000)
+     FDC:D                     0.176          CPU_Computer/Accumulator_4
+    ----------------------------------------
+    Total                      6.131ns (2.718ns logic, 3.413ns route)
+                                       (44.3% logic, 55.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock'
+  Total number of paths / destination ports: 12 / 12
+-------------------------------------------------------------------------
+Offset:              3.713ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       CPU_Computer/Mtridata_output_data_7 (FF)
+  Destination Clock: clock rising
+
+  Data Path: reset to CPU_Computer/Mtridata_output_data_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.715   1.074  reset_IBUF (reset_IBUF)
+     LUT2:I0->O            8   0.479   0.921  CPU_Computer/Mtridata_output_data_and00001 (CPU_Computer/Mtridata_output_data_and0000)
+     FDE:CE                    0.524          CPU_Computer/Mtridata_output_data_0
+    ----------------------------------------
+    Total                      3.713ns (1.718ns logic, 1.995ns route)
+                                       (46.3% logic, 53.7% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.87 secs
+ 
+--> 
+
+Total memory usage is 4514484 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+
